@@ -143,7 +143,17 @@ curl http://localhost:3000/health
 docker restart user-service
 docker restart task-service
 
+## Выключение системы
 
+### Быстрое выключение всех сервисов
+Остановка контейнеров
+docker stop user-service task-service
+Удаление контейнеров
+docker rm user-service task-service
+Удаление сети
+docker network rm task-user-network
+Опционально: удаление образов
+docker rmi user-service task-service
 
 ## Важные замечания
 
