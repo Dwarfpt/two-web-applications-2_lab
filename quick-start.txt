@@ -1,17 +1,18 @@
 # Быстрый запуск сервисов
 
-1. Создать сеть:
+#1. Создать сеть:
 docker network create task-user-network
 
-2. Запустить User Service:
+#2. Запустить User Service:
 cd user-service
 docker build -t user-service .
 docker run -d --name user-service --network task-user-network -p 8080:80 user-service
-
-3. Запустить Task Service:
+cd ..
+#3. Запустить Task Service:
 cd task-service
 docker build -t task-service .
 docker run -d --name task-service --network task-user-network -p 3000:3000 -e USERS_SERVICE_URL=http://user-service task-service
+cd ..
 
 # Остановка всего
 docker stop user-service task-service
